@@ -1,3 +1,5 @@
+using Microsoft.Maui.Platform;
+
 namespace InfinityRunner;
 public delegate void Callback();
 public class Player : Animacao
@@ -21,4 +23,17 @@ public class Player : Animacao
         SetAnimacaoAtiva(1);
         Play();
     }
+     public void MoveY (int s)
+     {
+        compImagem.TranslationY += s;
+     }
+     public double GetY()
+     {
+        return compImagem.TranslationY;
+     }
+
+     public void SetY(double a)
+     {
+        compImagem.TranslationY=a;
+     }
 }
