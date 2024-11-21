@@ -21,6 +21,7 @@ public partial class MainPage : ContentPage
 	int tempoNoAr=0;
 	
 	Player player;
+	Inimigos inimigos;
 
 	public MainPage()
 	{
@@ -34,6 +35,12 @@ public partial class MainPage : ContentPage
         base.OnSizeAllocated(w, h);
 		CorrigeTamanhoCenario(w,h);
 		CalculaVelocidade(w);
+
+		inimigos=new Inimigos(-w);
+		inimigos.Add(new Inimigo(obstaculo1));
+		inimigos.Add(new Inimigo(obstaculo2));
+		inimigos.Add(new Inimigo(obstaculo3));
+		inimigos.Add(new Inimigo(obstaculo4));
     }
 	
 	void OnGridTapped (object o, TappedEventArgs a)
@@ -50,22 +57,22 @@ public partial class MainPage : ContentPage
 	
 	void CalculaVelocidade(double w)
 	{
-		velocidade1=(int)(w*0.001);
-		velocidade2=(int)(w*0.004);
-		velocidade3=(int)(w*0.008);
-		velocidade = (int) (w * 0.01);
+		velocidade1 = (int)(w*0.001);
+		velocidade2 = (int)(w*0.004);
+		velocidade3 = (int)(w*0.008);
+		velocidade = (int)(w * 0.01);
 	}
 
 	void CorrigeTamanhoCenario(double w, double h)
 	{
 		foreach(var a in layerFundo1.Children)
-		(a as Image ).WidthRequest = w;
+			(a as Image ).WidthRequest = w;
 		foreach(var a in layerFundo2.Children)
-		(a as Image ).WidthRequest = w;
+			(a as Image ).WidthRequest = w;
 		foreach(var a in layerFundo3.Children)
-		(a as Image ).WidthRequest = w;
+			(a as Image ).WidthRequest = w;
 		foreach( var a in layerAsfalto.Children)
-		(a as Image ).WidthRequest = w;
+			(a as Image ).WidthRequest = w;
 
 		layerFundo1.WidthRequest=w*1.5;
 		layerFundo2.WidthRequest=w*1.5;
@@ -93,13 +100,14 @@ public partial class MainPage : ContentPage
 	void GerenciaCenario(HorizontalStackLayout hsl)
 	{
 		var view = (hsl.Children.First() as Image);
-		if(view.WidthRequest+hsl.TranslationX<0)
+		if(view.WidthRequest + hsl.TranslationX < 0)
 		{
 			hsl.Children.Remove(view);
 			hsl.Children.Add(view);
 			hsl.TranslationX = view.TranslationX;
 		}
 	}
+
 	void AplicaGravidade()
 	{
 		if (player.GetY()<0)
@@ -138,14 +146,19 @@ public partial class MainPage : ContentPage
 	async Task Desenha()
 	{
 		while(!estaMorto)
-		if (!estaPulando && !estaNoAr)
 		{
-			AplicaGravidade();
-			player.Desenha();
-		}
-		else 
-			AplicaPulo();
+			GerenciaCenarios();
+			if(inimigos != null)
+				inimigos.Desenha(velocidade);
+			if (!estaPulando && !estaNoAr)
+			{
+				AplicaGravidade();
+				player.Desenha();
+			}
+			else 
+				AplicaPulo();
 
-		await Task.Delay(tempoEntreFrames);
+			await Task.Delay(tempoEntreFrames);
+		}
 	}
 }

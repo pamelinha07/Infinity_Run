@@ -1,3 +1,5 @@
+using FFImageLoading.Maui;
+
 namespace InfinityRunner;
 public class Animacao
 {
@@ -8,9 +10,9 @@ public class Animacao
 	protected List <String> animacao3=new List<String>();
 	protected bool loop=true;
 	protected int animacaoAtiva=1;
-	protected Image compImagem; 
+	protected CachedImageView compImagem; 
     
-	public Animacao(Image a)
+	public Animacao(CachedImageView a)
 	{
 		compImagem=a;
 	}

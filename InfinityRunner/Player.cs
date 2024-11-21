@@ -1,10 +1,11 @@
 using Microsoft.Maui.Platform;
+using FFImageLoading.Maui;
 
 namespace InfinityRunner;
 public delegate void Callback();
 public class Player : Animacao
 {
-    public Player (Image a) : base (a)
+    public Player (CachedImageView a) : base (a)
     {
         for (int i = 1; i <= 6; i++)
             animacao1.Add ($"carro{i.ToString("D2")}.png");

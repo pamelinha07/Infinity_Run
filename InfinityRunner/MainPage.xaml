@@ -2,51 +2,76 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InfinityRunner.MainPage"
+             xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              Shell.NavBarIsVisible="False">
 
-    <Grid>
-        <Grid.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnGridTapped"/>
-        </Grid.GestureRecognizers>
-        <HorizontalStackLayout x:Name="layerFundo1">
-                <Image Source="fundo1.png"
-                        Aspect="AspectFill"/>
-                <Image Source="fundo1.png"
-                        Aspect="AspectFill"/>
-                <Image Source="fundo1.png"
-                        Aspect="AspectFill"/>
-        </HorizontalStackLayout>
-        <HorizontalStackLayout x:Name="layerFundo2">
-                <Image Source="fundo2.png"
-                        Aspect="AspectFill"/>
-                <Image Source="fundo2.png"
-                        Aspect="AspectFill"/>
-                <Image Source="fundo2.png"
-                        Aspect="AspectFill"/>
-        </HorizontalStackLayout> 
-        <HorizontalStackLayout x:Name="layerFundo3">
-                <Image Source="fundo3.png"
-                        Aspect="AspectFill"/>
-                <Image Source="fundo3.png"
-                        Aspect="AspectFill"/>
-                <Image Source="fundo3.png"
-                        Aspect="AspectFill"/>
-        </HorizontalStackLayout> 
-        <HorizontalStackLayout x:Name="layerAsfalto">
-                <Image Source="asfalto.png"
-                        WidthRequest="400"
-                        VerticalOptions="End"/>
-                <Image Source="asfalto.png"
-                        WidthRequest="400"
-                        VerticalOptions="End"/>
-                <Image Source="asfalto.png"
-                       WidthRequest="400"
-                       VerticalOptions="End"/>
-        </HorizontalStackLayout>
-        
-        <Image Source="a.png"
-               x:Name="imgCarro"
-               HeightRequest="100"
-               BackgroundColor="BLUE"/>
-    </Grid>
+       <Grid>
+              <Grid.GestureRecognizers>
+                     <TapGestureRecognizer Tapped="OnGridTapped"/>
+              </Grid.GestureRecognizers>
+              <HorizontalStackLayout x:Name="layerFundo1">
+                     <Image Source="fundo1.png"
+                            Aspect="AspectFill"/>
+                     <Image Source="fundo1.png"
+                            Aspect="AspectFill"/>
+                     <Image Source="fundo1.png"
+                            Aspect="AspectFill"/>
+              </HorizontalStackLayout>
+              <HorizontalStackLayout x:Name="layerFundo2">
+                     <Image Source="fundo2.png"
+                            Aspect="AspectFill"/>
+                     <Image Source="fundo2.png"
+                            Aspect="AspectFill"/>
+                     <Image Source="fundo2.png"
+                            Aspect="AspectFill"/>
+              </HorizontalStackLayout>
+              <HorizontalStackLayout x:Name="layerFundo3">
+                     <Image Source="fundo3.png"
+                            Aspect="AspectFill"/>
+                     <Image Source="fundo3.png"
+                            Aspect="AspectFill"/>
+                     <Image Source="fundo3.png"
+                            Aspect="AspectFill"/>
+              </HorizontalStackLayout>
+              <HorizontalStackLayout x:Name="layerAsfalto">
+                     <Image Source="asfalto.png"
+                            WidthRequest="400"
+                            VerticalOptions="End"/>
+                     <Image Source="asfalto.png"
+                            WidthRequest="400"
+                            VerticalOptions="End"/>
+                     <Image Source="asfalto.png"
+                            WidthRequest="400"
+                            VerticalOptions="End"/>
+              </HorizontalStackLayout>
+              
+              <ff:CachedImageView CacheType="Memory"
+                                   CacheDuration="365"
+                                   x:Name="imgCarro"
+                                   HeightRequest="100"/>
+
+              <Image Source="obstaculo1.png"
+                     x:Name="obstaculo1"
+                     WidthRequest="100"
+                     HeightRequest="100"
+                     BackgroundColor="BLUE"/>
+
+              <Image Source="obstaculo2.png"
+                     x:Name="obstaculo2"
+                     WidthRequest="100"
+                     HeightRequest="100"
+                     BackgroundColor="BLUE"/>
+
+              <Image Source="obstaculo3.png"
+                     x:Name="obstaculo3"
+                     WidthRequest="100"
+                     HeightRequest="100"
+                     BackgroundColor="BLUE"/>
+
+              <Image Source="obstaculo4.png"
+                     x:Name="obstaculo4"
+                     WidthRequest="100"
+                     HeightRequest="100"
+                     BackgroundColor="BLUE"/>
+        </Grid>
 </ContentPage>
